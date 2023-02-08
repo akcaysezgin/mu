@@ -1,13 +1,13 @@
 {
     "app_id": "com.moodle.moodlemobile",
-    "appname": "Moodle Mobile",
+    "appname": "Ankadema",
     "versioncode": 41100,
     "versionname": "4.1.1",
     "cache_update_frequency_usually": 420000,
     "cache_update_frequency_often": 1200000,
     "cache_update_frequency_sometimes": 3600000,
     "cache_update_frequency_rarely": 43200000,
-    "default_lang": "en",
+    "default_lang": "tr",
     "languages": {
         "af": "Afrikaans",
         "ar": "عربي",
@@ -68,14 +68,14 @@
     "wsservice": "moodle_mobile_app",
     "demo_sites": {
         "student": {
-            "url": "https://school.moodledemo.net",
-            "username": "student",
-            "password": "moodle"
+            "url": "https://lms.ankara.edu.tr/",
+            "username": "sezgin",
+            "password": "ws(q&7b9pGIFup5tWOX1(@qR"
         },
         "teacher": {
-            "url": "https://school.moodledemo.net",
-            "username": "teacher",
-            "password": "moodle"
+            "url": "https://lms.ankara.edu.tr/",
+            "username": "sezgin",
+            "password": "ws(q&7b9pGIFup5tWOX1(@qR"
         }
     },
     "defaultZoomLevel": "none",
@@ -85,14 +85,14 @@
         "high": 120
     },
     "customurlscheme": "moodlemobile",
-    "siteurl": "",
-    "sitename": "",
+    "siteurl": "https://lms.ankara.edu.tr/",
+    "sitename": "Ankadema",
     "multisitesdisplay": "",
     "sitefindersettings": {},
     "onlyallowlistedsites": false,
     "skipssoconfirmation": false,
     "forcedefaultlanguage": false,
-    "privacypolicy": "https://moodle.net/moodle-app-privacy/",
+    "privacypolicy": "https://lms.ankara.edu.tr/#",
     "notificoncolor": "#f98012",
     "enableanalytics": false,
     "enableonboarding": true,
