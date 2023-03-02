@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="41100" id="com.moodle.moodlemobile" ios-CFBundleVersion="4.1.1.0" version="4.1.1" versionCode="41100" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Moodle</name>
-    <description>Moodle official app</description>
-    <author email="mobile@moodle.com" href="http://moodle.com">Moodle Mobile team</author>
+<widget android-versionCode="41100" id="com.ankarauni.ankademamobile" ios-CFBundleVersion="4.1.1.0" version="4.1.1" versionCode="41100" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Ankadema</name>
+    <description>Ankadema app</description>
+    <author email="dev@ankadema.com" href="https://ankadema.ankara.edu.tr/">Ankadema</author>
     <content src="index.html" />
     <access origin="*" />
     <access launch-external="yes" origin="tel:*" />
@@ -651,4 +651,6 @@
             </array>
         </config-file>
     </platform>
+    <allow-navigation href="http://localhost:8100" sessionid="78c2f5a6" />
+    <allow-navigation href="http://localhost:8101" sessionid="64f1583f" />
 </widget>

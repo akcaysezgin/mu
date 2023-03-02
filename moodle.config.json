@@ -1,5 +1,5 @@
 {
-    "app_id": "com.moodle.moodlemobile",
+    "app_id": "com.ankarauni.ankademamobile",
     "appname": "Ankadema",
     "versioncode": 41100,
     "versionname": "4.1.1",
@@ -97,10 +97,10 @@
     "enableanalytics": false,
     "enableonboarding": true,
     "forceColorScheme": "",
-    "forceLoginLogo": false,
+    "forceLoginLogo": true,
     "ioswebviewscheme": "moodleappfs",
     "appstores": {
-        "android": "com.moodle.moodlemobile",
+        "android": "com.ankarauni.ankademamobile",
         "ios": "id633359593"
     },
     "wsrequestqueuelimit": 10,

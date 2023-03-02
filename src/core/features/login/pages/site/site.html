@@ -22,7 +22,7 @@
         </div>
         <form [formGroup]="siteForm" (ngSubmit)="connect($event, siteForm.value.siteUrl)" *ngIf="!fixedSites" #siteFormEl>
             <!-- Form to input the site URL if there are no fixed sites. -->
-            <ng-container *ngIf=" siteSelector=='url'">
+            <ng-container *ngIf="siteSelector=='url'">
                 <ion-item>
                     <ion-label position=" stacked">
                         <h2>{{ 'core.login.siteaddress' | translate }}</h2>
@@ -69,7 +69,7 @@
                     </div>
                 </ion-list>
 
-                <div *ngIf="!hasSites && loadingSites" class="core-login-site-nolist-loading">
+                <div *ngIf="hasSites && loadingSites" class="core-login-site-nolist-loading">
                     <ion-spinner [attr.aria-label]="'core.loading' | translate"></ion-spinner>
                 </div>
             </ng-container>
@@ -99,7 +99,7 @@
                 </ng-container>
             </ion-list>
         </ng-container>
-
+        <!--
         <ng-container *ngIf="showScanQR && !hasSites && !enteredSiteUrl">
             <div class="ion-text-center ion-padding ion-margin-top core-login-site-qrcode-separator">{{ 'core.login.or' | translate }}</div>
             <ion-button expand="block" fill="outline" class="ion-margin core-login-site-qrcode" (click)="showInstructionsAndScanQR()"
@@ -107,7 +107,7 @@
                 <ion-icon slot="start" name="fas-qrcode" aria-hidden="true"></ion-icon>
                 {{ 'core.scanqr' | translate }}
             </ion-button>
-        </ng-container>
+        </ng-container> -->
 
         <!-- Help. -->
         <ion-button class="ion-margin-top core-login-need-help core-button-as-link ion-text-wrap" (click)="showHelp()"
