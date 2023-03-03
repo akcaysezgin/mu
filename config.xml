@@ -214,6 +214,7 @@
                 </intent>
             </queries>
         </config-file>
+<<<<<<< HEAD
         <icon background="resources/android/icon/ldpi-background.png" density="ldpi" foreground="resources/android/icon/ldpi-foreground.png" />
         <icon background="resources/android/icon/mdpi-background.png" density="mdpi" foreground="resources/android/icon/mdpi-foreground.png" />
         <icon background="resources/android/icon/hdpi-background.png" density="hdpi" foreground="resources/android/icon/hdpi-foreground.png" />
@@ -238,6 +239,8 @@
         <splash density="port-xhdpi" src="resources/android/splash/drawable-port-xhdpi-screen.png" />
         <splash density="port-xxhdpi" src="resources/android/splash/drawable-port-xxhdpi-screen.png" />
         <splash density="port-xxxhdpi" src="resources/android/splash/drawable-port-xxxhdpi-screen.png" />
+=======
+>>>>>>> 8305112ffc683507db16ec1fe4acea2a9a611360
     </platform>
     <platform name="ios">
         <resource-file src="GoogleService-Info.plist" />
