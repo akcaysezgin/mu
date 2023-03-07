@@ -228,7 +228,7 @@ export class CorePushNotificationsProvider {
      * @returns Promise resolved when done.
      */
     protected async createDefaultChannel(): Promise<void> {
-        if (!CoreApp.isAndroid()) {
+        if (!CorePlatform.isAndroid()) {
             return;
         }
 
@@ -481,7 +481,7 @@ export class CorePushNotificationsProvider {
             text: notification.message,
             channel: 'PushPluginChannel',
         };
-        const isAndroid = CoreApp.isAndroid();
+        const isAndroid = CorePlatform.isAndroid();
         const extraFeatures = CoreUtils.isTrueOrOne(data.extrafeatures);
 
         if (extraFeatures && isAndroid && CoreUtils.isFalseOrZero(data.notif)) {
@@ -923,7 +923,7 @@ export type CoreUserRemoveUserDeviceWSResponse = {
  * Params of core_user_add_user_device WS.
  */
 export type CoreUserAddUserDeviceWSParams = {
-    appid: string; // The app id, usually something like com.ankarauni.ankademamobile.
+    appid: string; // The app id, usually something like com.moodle.moodlemobile.
     name: string; // The device name, 'occam' or 'iPhone' etc.
     model: string; // The device model 'Nexus4' or 'iPad1,1' etc.
     platform: string; // The device platform 'iOS' or 'Android' etc.

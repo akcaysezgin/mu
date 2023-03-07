@@ -11,8 +11,6 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// (C) Copyright 2015 Moodle Pty Ltd.
-//
 
 import { Injectable } from '@angular/core';
 import { CoreError } from '@classes/errors/error';
@@ -162,6 +160,10 @@ export class CoreReportBuilderService {
         return ROOT_CACHE_KEY + 'report';
     }
 
+    isString(value: unknown): boolean {
+        return typeof value === 'string';
+    }
+
 }
 
 export const CoreReportBuilder = makeSingleton(CoreReportBuilderService);
@@ -232,7 +234,7 @@ export interface CoreReportBuilderRetrieveReportMapped extends Omit<CoreReportBu
 export type CoreReportBuilderReportDataWSResponse = {
     headers: string[]; // Headers.
     rows: { // Rows.
-        columns: string[]; // Columns.
+        columns: (string | number)[]; // Columns.
         isExpanded: boolean;
     }[];
     totalrowcount: number; // Totalrowcount.

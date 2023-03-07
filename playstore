@@ -1,4 +1,0 @@
-keytool -genkey -v -keystore %userprofile%\upload-keystore.jks -storetype JKS -keyalg RSA -keysize 2048 -validity 10000 -alias upload
-
-ionic cordova build android --prod --packageType=bundle
-jarsigner -sigalg SHA256withRSA -digestalg SHA-256 -keystore releaseApp.jks ./platforms/android/app/build/outputs/bundle/release/app-release.aab release

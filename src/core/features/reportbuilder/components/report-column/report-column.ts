@@ -13,6 +13,7 @@
 // limitations under the License.
 
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { CoreReportBuilder } from '@features/reportbuilder/services/reportbuilder';
 
 @Component({
     selector: 'core-report-builder-report-column',
@@ -26,10 +27,13 @@ export class CoreReportBuilderReportColumnComponent {
     @Input() showFirstTitle = false;
     @Input() columnIndex!: number;
     @Input() rowIndex!: number;
-    @Input() column!: string;
+    @Input() column!: string | number;
     @Input() contextId!: number;
     @Input() header!: string;
+    @Input() source!: string;
     @Output() onToggleRow: EventEmitter<number> = new EventEmitter();
+
+    isString = (value: unknown): boolean => CoreReportBuilder.isString(value);
 
     /**
      * Emits row click

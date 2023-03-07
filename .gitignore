@@ -35,18 +35,9 @@ npm-debug.log*
 
 /src/assets/lang/*
 /src/assets/env.json
-<<<<<<< HEAD
 
 # Ignore Gradle project-specific cache directory
 .gradle
 
 # Ignore Gradle build output directory
 build
-=======
-
-# Ignore Gradle project-specific cache directory
-.gradle
-
-# Ignore Gradle build output directory
-build
->>>>>>> 8305112ffc683507db16ec1fe4acea2a9a611360

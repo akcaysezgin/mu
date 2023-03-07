@@ -23,9 +23,13 @@ import {
 import { IonRefresher } from '@ionic/angular';
 import { CoreNavigator } from '@services/navigator';
 import { CoreScreen } from '@services/screen';
+import { CoreSites } from '@services/sites';
 import { CoreDomUtils } from '@services/utils/dom';
+import { CoreTextErrorObject } from '@services/utils/text';
 import { CoreUtils } from '@services/utils/utils';
-import { BehaviorSubject } from 'rxjs';
+import { Translate } from '@singletons';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
     selector: 'core-report-builder-report-detail',
@@ -55,6 +59,21 @@ export class CoreReportBuilderReportDetailComponent implements OnInit {
         page: 0,
     });
 
+    source$: Observable<string>;
+
+    isString = (value: unknown): boolean => CoreReportBuilder.isString(value);
+
+    constructor() {
+        this.source$ = this.state$.pipe(
+            map(state => {
+                const splittedSource = state.report?.details.source.split('\\');
+                const source = splittedSource?.[splittedSource?.length - 1];
+
+                return source ?? 'system';
+            }),
+        );
+    }
+
     /**
      * @inheritdoc
      */
@@ -67,33 +86,62 @@ export class CoreReportBuilderReportDetailComponent implements OnInit {
      * Get report data.
      */
     async getReport(): Promise<void> {
-        if (!this.reportId) {
-            CoreDomUtils.showErrorModal(new CoreError('No report found'));
-            CoreNavigator.back();
+        try {
+            if (!this.reportId) {
+                CoreDomUtils.showErrorModal(new CoreError('No report found'));
+                CoreNavigator.back();
 
-            return;
+                return;
+            }
+
+            const { page } = this.state$.getValue();
+
+            const report = await CoreReportBuilder.loadReport(parseInt(this.reportId), page,this.perPage ?? REPORT_ROWS_LIMIT);
+
+            if (!report) {
+                CoreDomUtils.showErrorModal(new CoreError('No report found'));
+                CoreNavigator.back();
+
+                return;
+            }
+
+            await CoreReportBuilder.viewReport(this.reportId);
+
+            this.updateState({
+                report,
+                cardVisibleColumns: report.details.settingsdata.cardviewVisibleColumns,
+                cardviewShowFirstTitle: report.details.settingsdata.cardviewShowFirstTitle,
+            });
+
+            this.onReportLoaded.emit(report.details);
+        } catch {
+            const errorConfig: CoreTextErrorObject = {
+                title: Translate.instant('core.error'),
+                body: `
+                    <p>${Translate.instant('addon.mod_page.errorwhileloadingthepage')}</p>
+                    <p>${Translate.instant('core.course.useactivityonbrowser')}</p>
+                `,
+                buttons: [
+                    {
+                        text: Translate.instant('core.cancel'),
+                        role: 'cancel',
+                        handler: async () => await CoreNavigator.back(),
+                    },
+                    {
+                        text: Translate.instant('core.openinbrowser'),
+                        role: 'confirm',
+                        handler: async () => {
+                            const site = CoreSites.getRequiredCurrentSite();
+                            const href = `${site.getURL()}/reportbuilder/view.php?id=${this.reportId}`;
+                            await CoreUtils.openInBrowser(href, { showBrowserWarning: false });
+                            await CoreNavigator.back();
+                        },
+                    },
+                ],
+            };
+
+            await CoreDomUtils.showErrorModal(errorConfig);
         }
-
-        const { page } = this.state$.getValue();
-
-        const report = await CoreReportBuilder.loadReport(parseInt(this.reportId), page,this.perPage ?? REPORT_ROWS_LIMIT);
-
-        if (!report) {
-            CoreDomUtils.showErrorModal(new CoreError('No report found'));
-            CoreNavigator.back();
-
-            return;
-        }
-
-        await CoreReportBuilder.viewReport(this.reportId);
-
-        this.updateState({
-            report,
-            cardVisibleColumns: report.details.settingsdata.cardviewVisibleColumns,
-            cardviewShowFirstTitle: report.details.settingsdata.cardviewShowFirstTitle,
-        });
-
-        this.onReportLoaded.emit(report.details);
     }
 
     updateState(state: Partial<CoreReportBuilderReportDetailState>): void {

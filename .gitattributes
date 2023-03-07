@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #
 # https://help.github.com/articles/dealing-with-line-endings/
 #
@@ -8,14 +7,3 @@
 # These are Windows script files and should use crlf
 *.bat           text eol=crlf
 
-=======
-#
-# https://help.github.com/articles/dealing-with-line-endings/
-#
-# Linux start script should use lf
-/gradlew        text eol=lf
-
-# These are Windows script files and should use crlf
-*.bat           text eol=crlf
-
->>>>>>> 8305112ffc683507db16ec1fe4acea2a9a611360
