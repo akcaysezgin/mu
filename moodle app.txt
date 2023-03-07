@@ -1,0 +1,39 @@
+moodle app  #https://docs.moodle.org/dev/Setting_up_your_development_environment_for_Moodle_Mobile_2_(Ionic_1)#Automatically_setup_the_environment
+
+nodejs install
+nvm install
+
+nwm install 14
+
+nwm use 14.21.3
+
+npm install
+npm cache clean --froce
+npm i -g cordova ionic
+
+npm install -g bower
+
+npm install -g gulp
+
+ionic cordova prepare android/ios
+
+ionic cordova platform remove android
+ionic cordova platform add android
+
+npm i -g cordova-res
+ionic cordova resources android --force
+npm i -g native-run
+
+
+ionic cordova platform remove ios
+ionic cordova platform add ios
+
+
+
+
+
+##################
+ionic cordova platform remove android
+ionic cordova platform add android@8.0.0
+ionic cordova prepare android
+ionic cordova build android
